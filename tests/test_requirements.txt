@@ -1,0 +1,45 @@
+# Test Requirements for LLM Token Analytics Library
+# Install with: pip install -r tests/test_requirements.txt
+
+# Core testing framework
+pytest>=7.0.0
+pytest-cov>=4.0.0           # Coverage reporting
+pytest-xdist>=3.0.0         # Parallel test execution
+pytest-timeout>=2.1.0       # Test timeout handling
+pytest-mock>=3.10.0         # Mocking utilities
+pytest-benchmark>=4.0.0     # Performance benchmarking
+
+# Data validation and property-based testing
+hypothesis>=6.0.0            # Property-based testing
+pydantic>=2.0.0             # Data validation (optional)
+faker>=19.0.0               # Fake data generation
+
+# Performance and memory monitoring
+psutil>=5.9.0               # System and process monitoring
+memory-profiler>=0.60.0     # Memory usage profiling
+
+# HTTP mocking and testing
+responses>=0.23.0           # HTTP request mocking
+requests-mock>=1.10.0      # Alternative HTTP mocking
+
+# Test reporting and output
+pytest-html>=3.1.0         # HTML test reports
+pytest-json-report>=1.5.0  # JSON test reports
+pytest-metadata>=2.0.0     # Test metadata
+
+# Code quality and linting (for CI/CD)
+black>=23.0.0              # Code formatting
+isort>=5.12.0              # Import sorting
+flake8>=6.0.0              # Linting
+mypy>=1.0.0                # Type checking
+
+# Additional utilities for specific tests
+freezegun>=1.2.0           # Time mocking
+factory-boy>=3.2.0         # Test data factories (if needed)
+parameterized>=0.8.0       # Parameterized tests
+
+# Documentation testing
+doctest                     # Built-in doctest support
+
+# Jupyter notebook testing (if applicable)
+nbval>=0.10.0              # Notebook validation

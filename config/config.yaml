@@ -1,0 +1,408 @@
+# LLM Token Analytics Configuration
+# ==================================
+
+# API Credentials
+# ---------------
+# Set these as environment variables or in a .env file
+
+api_credentials:
+  openai:
+    api_key: ${OPENAI_API_KEY}
+    organization_id: ${OPENAI_ORG_ID}
+  
+  anthropic:
+    api_key: ${ANTHROPIC_API_KEY}
+  
+  google:
+    project_id: ${GOOGLE_CLOUD_PROJECT}
+    credentials_path: ${GOOGLE_APPLICATION_CREDENTIALS}
+
+# Data Collection Settings
+# ------------------------
+
+collection:
+  # Providers to collect from
+  providers:
+    - openai
+    - anthropic
+    - google
+  
+  # Date range for collection
+  date_range:
+    start_days_ago: 30
+    end_days_ago: 0
+  
+  # Collection parameters
+  batch_size: 100
+  rate_limit_delay: 0.1  # seconds
+  max_retries: 3
+  timeout: 30  # seconds
+  
+  # Storage settings
+  storage:
+    format: parquet  # Options: parquet, csv, json
+    compression: snappy
+    output_dir: ./data
+
+# Simulation Settings
+# -------------------
+
+simulation:
+  # Number of iterations
+  n_simulations: 100000
+  
+  # Confidence level for intervals
+  confidence_level: 0.95
+  
+  # Random seed for reproducibility
+  seed: 42
+  
+  # Pricing mechanisms to test
+  mechanisms:
+    - per_token
+    - bundle
+    - hybrid
+    - cached
+    - outcome
+    - dynamic
+  
+  # Bootstrap settings
+  bootstrap:
+    iterations: 10000
+    confidence: 0.95
+  
+  # Sensitivity analysis parameters
+  sensitivity:
+    correlation:
+      min: 0.0
+      max: 0.8
+      steps: 9
+    
+    output_variance:
+      min: 0.3
+      max: 0.9
+      steps: 7
+    
+    cache_hit_rate:
+      min: 0.3
+      max: 0.9
+      steps: 7
+
+# Pricing Parameters
+# ------------------
+
+pricing:
+  # Per-token pricing (USD per 1000 tokens)
+  per_token:
+    openai:
+      gpt-4:
+        input: 30
+        output: 60
+      gpt-3.5-turbo:
+        input: 0.5
+        output: 1.5
+    
+    anthropic:
+      claude-3-opus:
+        input: 15
+        output: 75
+      claude-3-sonnet:
+        input: 3
+        output: 15
+    
+    google:
+      gemini-pro:
+        input: 0.25
+        output: 0.5
+      gemini-ultra:
+        input: 7
+        output: 21
+  
+  # Bundle pricing
+  bundle:
+    size: 100000  # tokens
+    price: 5.0  # USD
+    overage_rate: 80  # per 1000 tokens
+  
+  # Hybrid pricing
+  hybrid:
+    seat_cost: 30.0  # USD per seat
+    included_tokens: 50000
+    overage_rate: 50  # per 1000 tokens
+  
+  # Cached pricing
+  cached:
+    cache_hit_rate: 0.7
+    cache_discount: 0.8  # 80% discount on cached tokens
+  
+  # Outcome pricing
+  outcome:
+    price_per_outcome: 0.10  # USD
+    avg_tokens_per_outcome: 500
+  
+  # Dynamic pricing
+  dynamic:
+    peak_multiplier: 1.5
+    off_peak_multiplier: 0.7
+    peak_probability: 0.2
+    off_peak_probability: 0.2
+
+# Analysis Settings
+# -----------------
+
+analysis:
+  # Distribution fitting
+  distributions:
+    candidates:
+      - lognorm
+      - gamma
+      - weibull_min
+      - pareto
+      - burr12
+    
+    validation:
+      ks_threshold: 0.05
+      percentile_error_threshold: 0.1
+  
+  # Correlation analysis
+  correlation:
+    methods:
+      - pearson
+      - spearman
+      - kendall
+    
+    tail_threshold: 0.95
+    
+  # Cost analysis
+  cost:
+    risk_metrics:
+      - var
+      - cvar
+      - sharpe_ratio
+      - max_drawdown
+    
+    confidence_level: 0.95
+
+# Visualization Settings
+# ----------------------
+
+visualization:
+  # Plot settings
+  plots:
+    theme: plotly_white
+    height: 600
+    width: 1000
+    
+    colors:
+      primary: "#1f77b4"
+      secondary: "#ff7f0e"
+      success: "#2ca02c"
+      warning: "#d62728"
+      info: "#17a2b8"
+  
+  # Dashboard settings
+  dashboard:
+    port: 8050
+    debug: true
+    host: "127.0.0.1"
+    
+    refresh_interval: 5  # seconds
+    
+    components:
+      - summary_cards
+      - cost_comparison
+      - distribution_plots
+      - sensitivity_charts
+      - correlation_matrix
+
+# Output Settings
+# ---------------
+
+output:
+  # Report generation
+  reports:
+    format: html  # Options: html, pdf, markdown
+    include_plots: true
+    include_raw_data: false
+    
+    sections:
+      - executive_summary
+      - distribution_analysis
+      - correlation_analysis
+      - simulation_results
+      - sensitivity_analysis
+      - recommendations
+  
+  # Export settings
+  export:
+    formats:
+      - json
+      - csv
+      - excel
+    
+    include_metadata: true
+    timestamp_format: "%Y%m%d_%H%M%S"
+
+# Logging Settings
+# ----------------
+
+logging:
+  level: INFO  # Options: DEBUG, INFO, WARNING, ERROR, CRITICAL
+  
+  format: "%(asctime)s - %(name)s - %(levelname)s - %(message)s"
+  
+  handlers:
+    console:
+      enabled: true
+      level: INFO
+    
+    file:
+      enabled: true
+      level: DEBUG
+      path: ./logs/llm_analytics.log
+      max_bytes: 10485760  # 10MB
+      backup_count: 5
+
+# Advanced Settings
+# -----------------
+
+advanced:
+  # Parallel processing
+  parallel:
+    enabled: true
+    n_workers: -1  # -1 for auto (number of CPUs)
+    backend: multiprocessing  # Options: threading, multiprocessing
+  
+  # Memory management
+  memory:
+    max_memory_gb: 8
+    chunk_size: 10000
+    gc_interval: 1000  # Garbage collection interval
+  
+  # Cache settings
+  cache:
+    enabled: true
+    directory: ./cache
+    ttl: 3600  # seconds
+    max_size_mb: 500
+  
+  # Database settings (optional)
+  database:
+    enabled: false
+    type: postgresql  # Options: postgresql, mysql, sqlite
+    connection:
+      host: localhost
+      port: 5432
+      database: llm_analytics
+      user: ${DB_USER}
+      password: ${DB_PASSWORD}
+    
+    pool:
+      min_size: 1
+      max_size: 10
+      timeout: 30
+
+# Monitoring Settings
+# -------------------
+
+monitoring:
+  # Metrics collection
+  metrics:
+    enabled: true
+    interval: 60  # seconds
+    
+    collectors:
+      - token_usage
+      - cost_tracking
+      - error_rates
+      - latency
+  
+  # Alerting
+  alerts:
+    enabled: false
+    
+    channels:
+      email:
+        enabled: false
+        smtp_server: smtp.gmail.com
+        smtp_port: 587
+        from_address: ${ALERT_EMAIL_FROM}
+        to_addresses:
+          - ${ALERT_EMAIL_TO}
+      
+      slack:
+        enabled: false
+        webhook_url: ${SLACK_WEBHOOK_URL}
+    
+    rules:
+      - name: high_cost
+        condition: "daily_cost > 100"
+        severity: warning
+        
+      - name: error_rate
+        condition: "error_rate > 0.05"
+        severity: critical
+      
+      - name: high_latency
+        condition: "p95_latency > 5000"
+        severity: warning
+
+# User Profiles
+# -------------
+# Pre-defined user profiles for optimal mechanism selection
+
+user_profiles:
+  startup:
+    risk_tolerance: low
+    usage_volume: 50000
+    predictability_preference: 0.9
+    budget_constraint: 100
+    
+  enterprise:
+    risk_tolerance: medium
+    usage_volume: 1000000
+    predictability_preference: 0.7
+    budget_constraint: 5000
+    
+  researcher:
+    risk_tolerance: high
+    usage_volume: 200000
+    predictability_preference: 0.3
+    budget_constraint: 500
+    
+  hobbyist:
+    risk_tolerance: low
+    usage_volume: 10000
+    predictability_preference: 0.8
+    budget_constraint: 20
+
+# Environment-specific Overrides
+# -------------------------------
+
+environments:
+  development:
+    simulation:
+      n_simulations: 1000
+    logging:
+      level: DEBUG
+    dashboard:
+      debug: true
+  
+  staging:
+    simulation:
+      n_simulations: 10000
+    logging:
+      level: INFO
+    dashboard:
+      debug: false
+  
+  production:
+    simulation:
+      n_simulations: 100000
+    logging:
+      level: WARNING
+    dashboard:
+      debug: false
+    monitoring:
+      alerts:
+        enabled: true
