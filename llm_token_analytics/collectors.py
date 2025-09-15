@@ -5,7 +5,6 @@ Collectors for OpenAI, Anthropic, and Google AI usage data.
 """
 
 import os
-import json
 import pandas as pd
 import numpy as np
 from datetime import datetime, timedelta
@@ -75,12 +74,10 @@ class BaseCollector(ABC):
     @abstractmethod
     def _get_headers(self) -> Dict[str, str]:
         """Get API headers."""
-        pass
 
     @abstractmethod
     def collect(self) -> pd.DataFrame:
         """Collect usage data from API."""
-        pass
 
     def _cache_data(self, data: pd.DataFrame, cache_key: str):
         """Cache collected data."""

@@ -8,7 +8,7 @@ import numpy as np
 import pandas as pd
 from scipy import stats
 from dataclasses import dataclass
-from typing import Dict, List, Tuple, Optional, Any
+from typing import Dict, List, Tuple
 import logging
 from pathlib import Path
 from tqdm import tqdm
@@ -283,7 +283,7 @@ class TokenSimulator:
         }
 
     def _bootstrap_ci(self, data: np.ndarray, statistic,
-                     n_bootstrap: int = 1000, confidence: float = 0.95) -> Tuple[float, float]:
+                      n_bootstrap: int = 1000, confidence: float = 0.95) -> Tuple[float, float]:
         """Calculate bootstrap confidence interval."""
         bootstrap_samples = []
         n = len(data)
@@ -352,7 +352,7 @@ class TokenSimulator:
         return sensitivities
 
     def _analyze_sensitivity(self, results: List[Dict], values: List[float],
-                            base: Dict) -> Dict:
+                             base: Dict) -> Dict:
         """Analyze sensitivity results."""
         sensitivity = {}
 

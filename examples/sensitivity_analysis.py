@@ -10,15 +10,13 @@ import os
 import sys
 import numpy as np
 import pandas as pd
-from pathlib import Path
 
 # Add parent directory to path if running from examples folder
 sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 
 from llm_token_analytics import (
     TokenSimulator,
-    SimulationConfig,
-    SimulationVisualizer
+    SimulationConfig
 )
 
 

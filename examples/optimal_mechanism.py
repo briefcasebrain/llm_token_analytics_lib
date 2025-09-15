@@ -9,8 +9,6 @@ for different user profiles based on their characteristics.
 import os
 import sys
 import pandas as pd
-import numpy as np
-from pathlib import Path
 
 # Add parent directory to path if running from examples folder
 sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))

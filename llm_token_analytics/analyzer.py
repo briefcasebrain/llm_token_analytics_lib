@@ -9,9 +9,8 @@ import pandas as pd
 from scipy import stats
 from scipy.stats import gaussian_kde
 from dataclasses import dataclass
-from typing import Dict, List, Tuple, Optional, Any
+from typing import Dict, Optional
 import logging
-from pathlib import Path
 import warnings
 
 warnings.filterwarnings('ignore')
@@ -350,7 +349,7 @@ class TokenAnalyzer:
         self.cost_analyzer = None
 
     def fit_distributions(self, input_tokens: np.ndarray,
-                         output_tokens: np.ndarray) -> Dict:
+                          output_tokens: np.ndarray) -> Dict:
         """Fit distributions to token data."""
         results = {}
 
@@ -363,7 +362,7 @@ class TokenAnalyzer:
         return results
 
     def analyze_correlations(self, input_tokens: np.ndarray,
-                           output_tokens: np.ndarray) -> Dict:
+                             output_tokens: np.ndarray) -> Dict:
         """Analyze correlation structure."""
         analyzer = CorrelationAnalyzer(input_tokens, output_tokens)
         return analyzer.analyze_correlations()
@@ -374,8 +373,8 @@ class TokenAnalyzer:
         return analyzer.calculate_risk_metrics()
 
     def full_analysis(self, input_tokens: np.ndarray,
-                     output_tokens: np.ndarray,
-                     mechanism_results: Dict) -> Dict:
+                      output_tokens: np.ndarray,
+                      mechanism_results: Dict) -> Dict:
         """Perform comprehensive analysis."""
         return {
             'distributions': self.fit_distributions(input_tokens, output_tokens),

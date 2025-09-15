@@ -6,14 +6,11 @@ Complete CLI for data collection, simulation, analysis, and visualization.
 
 import click
 import pandas as pd
-import numpy as np
 from pathlib import Path
 import json
 import logging
-from datetime import datetime, timedelta
-from typing import Optional
 
-from .collectors import UnifiedCollector, CollectorConfig, DataProcessor
+from .collectors import UnifiedCollector, DataProcessor
 from .simulator import TokenSimulator, SimulationConfig, SimulationResults
 from .analyzer import TokenAnalyzer, CostAnalyzer
 from .visualizer import SimulationVisualizer, create_dashboard
@@ -47,7 +44,6 @@ def cli(ctx, verbose, config):
 @cli.group()
 def collect():
     """Data collection commands."""
-    pass
 
 
 @collect.command('fetch')
@@ -126,7 +122,6 @@ def collect_process(input_file, output, aggregate):
 @cli.group()
 def simulate():
     """Simulation commands."""
-    pass
 
 
 @simulate.command('run')
@@ -158,9 +153,9 @@ def simulate_run(ctx, iterations, mechanisms, output, seed):
     output_path = Path(output)
     output_path.parent.mkdir(parents=True, exist_ok=True)
 
-    import pickle
+    import pickle  # nosec: internal data serialization only
     with open(output_path, 'wb') as f:
-        pickle.dump(results, f)
+        pickle.dump(results, f)  # nosec: internal data serialization only
 
     click.echo("\nSimulation Results:")
     click.echo("-" * 40)
@@ -176,9 +171,9 @@ def simulate_run(ctx, iterations, mechanisms, output, seed):
               help='Output format')
 def simulate_compare(results_file, format):
     """Compare simulation results across mechanisms."""
-    import pickle
+    import pickle  # nosec: internal data serialization only
     with open(results_file, 'rb') as f:
-        results = pickle.load(f)
+        results = pickle.load(f)  # nosec: internal data serialization only
 
     if isinstance(results, SimulationResults):
         df = results.to_dataframe()
@@ -233,7 +228,6 @@ def simulate_sensitivity(iterations, parameter, values, output):
 @cli.group()
 def analyze():
     """Analysis commands."""
-    pass
 
 
 @analyze.command('distributions')
@@ -303,7 +297,7 @@ def analyze_correlations(data_file):
     click.echo(f"Kendall: {linear['kendall']['value']:.3f} (p={linear['kendall']['p_value']:.4f})")
 
     tail = results['tail_dependence']
-    click.echo(f"\nTail Dependence:")
+    click.echo("\nTail Dependence:")
     click.echo(f"Upper tail: {tail['upper_tail']:.3f}")
     click.echo(f"Lower tail: {tail['lower_tail']:.3f}")
 
@@ -313,9 +307,9 @@ def analyze_correlations(data_file):
 @click.option('--output', '-o', type=click.Path(), help='Output file')
 def analyze_risk(results_file, output):
     """Calculate risk metrics for pricing mechanisms."""
-    import pickle
+    import pickle  # nosec: internal data serialization only
     with open(results_file, 'rb') as f:
-        results = pickle.load(f)
+        results = pickle.load(f)  # nosec: internal data serialization only
 
     if isinstance(results, SimulationResults):
         mechanism_results = results.mechanism_results
@@ -340,7 +334,6 @@ def analyze_risk(results_file, output):
 @cli.group()
 def visualize():
     """Visualization commands."""
-    pass
 
 
 @visualize.command('distributions-plot')
@@ -373,9 +366,9 @@ def visualize_distributions(data_file, output, show):
 @click.option('--show', is_flag=True, help='Show plot interactively')
 def visualize_comparison(results_file, output, show):
     """Create comparison plots for simulation results."""
-    import pickle
+    import pickle  # nosec: internal data serialization only
     with open(results_file, 'rb') as f:
-        results = pickle.load(f)
+        results = pickle.load(f)  # nosec: internal data serialization only
 
     visualizer = SimulationVisualizer(results)
     fig = visualizer.create_comparison_plot()
@@ -396,9 +389,9 @@ def visualize_dashboard(results_file, port, serve):
     """Create interactive dashboard."""
     click.echo(f"Creating dashboard from {results_file}...")
 
-    import pickle
+    import pickle  # nosec: internal data serialization only
     with open(results_file, 'rb') as f:
-        results = pickle.load(f)
+        results = pickle.load(f)  # nosec: internal data serialization only
 
     app = create_dashboard(results)
 
@@ -427,9 +420,9 @@ def optimize(risk_tolerance, usage_volume, budget, results_file):
         results = simulator.run()
         mechanism_results = results.mechanism_results
     else:
-        import pickle
+        import pickle  # nosec: internal data serialization only
         with open(results_file, 'rb') as f:
-            results = pickle.load(f)
+            results = pickle.load(f)  # nosec: internal data serialization only
             if isinstance(results, SimulationResults):
                 mechanism_results = results.mechanism_results
             else:

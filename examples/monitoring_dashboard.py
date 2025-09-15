@@ -9,8 +9,7 @@ import os
 import sys
 import numpy as np
 import pandas as pd
-from datetime import datetime, timedelta
-from pathlib import Path
+from datetime import datetime
 
 # Add parent directory to path if running from examples folder
 sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
@@ -26,10 +25,8 @@ def create_monitoring_dashboard():
 
     try:
         import dash
-        from dash import dcc, html, Input, Output, callback
+        from dash import dcc, html
         import dash_bootstrap_components as dbc
-        import plotly.graph_objects as go
-        from plotly.subplots import make_subplots
     except ImportError:
         print("Dash not installed. Install with: pip install dash dash-bootstrap-components")
         print("\nGenerating static dashboard instead...")
@@ -176,6 +173,12 @@ def create_monitoring_dashboard():
 
 def create_usage_timeline(data):
     """Create usage timeline chart."""
+    try:
+        import plotly.graph_objects as go
+    except ImportError:
+        print("Plotly not available for usage timeline")
+        return None
+
     fig = go.Figure()
 
     fig.add_trace(go.Scatter(
@@ -208,6 +211,13 @@ def create_usage_timeline(data):
 
 def create_cost_timeline(data):
     """Create cost timeline chart."""
+    try:
+        import plotly.graph_objects as go
+        from plotly.subplots import make_subplots
+    except ImportError:
+        print("Plotly not available for cost timeline")
+        return None
+
     fig = make_subplots(specs=[[{"secondary_y": True}]])
 
     fig.add_trace(
@@ -247,6 +257,12 @@ def create_cost_timeline(data):
 
 def create_token_distribution(data):
     """Create token distribution chart."""
+    try:
+        import plotly.graph_objects as go
+    except ImportError:
+        print("Plotly not available for token distribution")
+        return None
+
     fig = go.Figure()
 
     fig.add_trace(go.Box(
@@ -292,6 +308,13 @@ def create_token_distribution(data):
 
 def create_performance_metrics(data):
     """Create performance metrics chart."""
+    try:
+        import plotly.graph_objects as go
+        from plotly.subplots import make_subplots
+    except ImportError:
+        print("Plotly not available for performance metrics")
+        return None
+
     fig = make_subplots(
         rows=2, cols=1,
         subplot_titles=('P95 Latency', 'Cache Hit Rate'),

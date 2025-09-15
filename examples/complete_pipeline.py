@@ -11,15 +11,12 @@ import sys
 import json
 import pandas as pd
 import numpy as np
-from pathlib import Path
-from datetime import datetime, timedelta
 
 # Add parent directory to path if running from examples folder
 sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 
 from llm_token_analytics import (
     UnifiedCollector,
-    CollectorConfig,
     TokenSimulator,
     SimulationConfig,
     TokenAnalyzer,
@@ -71,7 +68,7 @@ def run_complete_pipeline():
 
         # Calculate costs
         data['cost'] = (data['input_tokens'] * 0.03 +
-                       data['output_tokens'] * 0.06) / 1000
+                        data['output_tokens'] * 0.06) / 1000
 
         data.to_parquet("synthetic_usage.parquet")
         print(f"Generated {len(data)} synthetic records")

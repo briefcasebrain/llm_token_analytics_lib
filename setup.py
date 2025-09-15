@@ -13,12 +13,12 @@ with open("README.md", "r", encoding="utf-8") as fh:
 setup(
     name="llm-token-analytics",
     version="1.0.0",
-    author="Your Name",
-    author_email="your.email@example.com",
+    author="Aansh Shah",
+    author_email="aansh@briefcasebrain.com",
     description="Robust simulation and analytics for LLM token pricing",
     long_description=long_description,
     long_description_content_type="text/markdown",
-    url="https://github.com/yourusername/llm-token-analytics",
+    url="https://github.com/briefcasebrain/llm-token-analytics",
     packages=find_packages(),
     classifiers=[
         "Development Status :: 4 - Beta",
@@ -56,10 +56,21 @@ setup(
             "black>=21.0",
             "pylint>=2.11.0",
             "mypy>=0.910",
+            "flake8>=4.0.0",
+            "bandit>=1.7.0",
         ],
         "viz": [
             "matplotlib>=3.4.0",
             "seaborn>=0.11.0",
+        ],
+        "api": [
+            "flask>=2.0.0",
+            "flask-cors>=3.0.0",
+            "flask-limiter>=2.0.0",
+        ],
+        "dashboard": [
+            "dash>=2.0.0",
+            "dash-bootstrap-components>=1.0.0",
         ],
     },
     entry_points={
