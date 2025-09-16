@@ -1,7 +1,7 @@
 # LLM Token Analytics Library
 
 [![Python 3.9+](https://img.shields.io/badge/python-3.9+-blue.svg)](https://www.python.org/downloads/)
-[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+[![License: Non-Commercial](https://img.shields.io/badge/License-Non--Commercial-red.svg)](LICENSE)
 [![Tests](https://img.shields.io/badge/tests-passing-green.svg)](https://github.com/your-username/llm-token-analytics/actions)
 
 A comprehensive Python library for analyzing and simulating LLM token usage patterns and pricing mechanisms. This library provides tools for Monte Carlo simulations, statistical analysis, and visualization to help optimize LLM pricing strategies.
@@ -379,7 +379,16 @@ Contributions are welcome! Please feel free to submit a Pull Request.
 
 ## License
 
-MIT License - see [LICENSE](LICENSE) for details.
+This project is licensed under a Non-Commercial License - see [LICENSE](LICENSE) for details.
+
+**Key Restrictions:**
+- ❌ Commercial use prohibited
+- ❌ Cannot be used in revenue-generating activities
+- ❌ Cannot be incorporated into commercial products
+- ✅ Personal, educational, and research use allowed
+- ✅ Non-profit organizational use permitted
+
+For commercial licensing inquiries, please contact the project maintainers.
 
 ## Citation
 
