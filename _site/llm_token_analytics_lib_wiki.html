@@ -1,0 +1,386 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="generator" content="pandoc">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+        <title>llm_token_analytics_lib_wiki</title>
+  <style>
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      line-height: 1.6;
+      color: #24292e;
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 20px;
+      background-color: #ffffff;
+    }
+    .header-nav {
+      background: #f6f8fa;
+      padding: 15px;
+      border-radius: 8px;
+      margin-bottom: 30px;
+      text-align: center;
+    }
+    .header-nav a {
+      display: inline-block;
+      margin: 0 10px;
+      padding: 8px 16px;
+      background: #0366d6;
+      color: white;
+      text-decoration: none;
+      border-radius: 5px;
+      font-size: 14px;
+    }
+    .header-nav a:hover {
+      background: #0256cc;
+    }
+    h1, h2, h3, h4, h5, h6 {
+      color: #24292e;
+      margin-top: 24px;
+      margin-bottom: 16px;
+      font-weight: 600;
+    }
+    h1 {
+      border-bottom: 1px solid #e1e4e8;
+      padding-bottom: 10px;
+    }
+    h2 {
+      border-bottom: 1px solid #e1e4e8;
+      padding-bottom: 8px;
+    }
+    pre {
+      background: #f6f8fa;
+      border-radius: 6px;
+      padding: 16px;
+      overflow: auto;
+      border: 1px solid #e1e4e8;
+    }
+    code {
+      background: #f6f8fa;
+      padding: 2px 4px;
+      border-radius: 3px;
+      font-size: 85%;
+    }
+    pre code {
+      background: none;
+      padding: 0;
+    }
+    blockquote {
+      border-left: 4px solid #dfe2e5;
+      padding-left: 16px;
+      color: #6a737d;
+      margin: 0;
+    }
+    table {
+      border-collapse: collapse;
+      width: 100%;
+      margin: 16px 0;
+    }
+    th, td {
+      border: 1px solid #e1e4e8;
+      padding: 8px 12px;
+      text-align: left;
+    }
+    th {
+      background: #f6f8fa;
+      font-weight: 600;
+    }
+    a {
+      color: #0366d6;
+      text-decoration: none;
+    }
+    a:hover {
+      text-decoration: underline;
+    }
+    .footer {
+      margin-top: 40px;
+      padding-top: 20px;
+      border-top: 1px solid #e1e4e8;
+      text-align: center;
+      color: #586069;
+      font-size: 14px;
+    }
+  </style>
+</head>
+<body>
+  <div class="header-nav">
+    <a href="index.html">🏠 Home</a>
+    <a href="01_Overview.html">📖 Overview</a>
+    <a href="02_Architecture.html">🏗️ Architecture</a>
+    <a href="03_Getting_Started.html">🚀 Getting Started</a>
+    <a href="06_API_Documentation.html">🔌 API Docs</a>
+    <a href="llm_token_analytics_lib_wiki.html">📄 Complete Wiki</a>
+  </div>
+  <h1 id="llm-token-analytics-library---wiki-documentation">LLM Token
+  Analytics Library - Wiki Documentation</h1>
+  <h2 id="overview">Overview</h2>
+  <p>The LLM Token Analytics Library is a robust Python library designed
+  for analyzing Large Language Model (LLM) token usage patterns,
+  retrieving provider data, and running comprehensive pricing
+  simulations. This project serves as a valuable tool for developers,
+  data scientists, and researchers who are interested in optimizing LLM
+  usage costs and understanding usage dynamics.</p>
+  <h3 id="primary-use-cases-and-target-audience">Primary Use Cases and
+  Target Audience</h3>
+  <ul>
+  <li><strong>Developers</strong> looking to integrate LLM token
+  analytics into their applications.</li>
+  <li><strong>Data Scientists</strong> seeking to analyze and visualize
+  LLM token usage patterns.</li>
+  <li><strong>Researchers</strong> studying the economic implications of
+  different pricing mechanisms for LLMs.</li>
+  </ul>
+  <h3 id="key-features-and-capabilities">Key Features and
+  Capabilities</h3>
+  <ul>
+  <li>Monte Carlo simulations for pricing mechanism comparisons.</li>
+  <li>REST API client for remote simulation execution and data
+  retrieval.</li>
+  <li>Data collection from various LLM providers.</li>
+  <li>Customizable pricing mechanisms and simulation
+  configurations.</li>
+  <li>Full end-to-end data collection and optimization workflows.</li>
+  </ul>
+  <h2 id="architecture">Architecture</h2>
+  <h3 id="system-design-and-architecture">System Design and
+  Architecture</h3>
+  <p>The architecture of the LLM Token Analytics Library is designed to
+  facilitate modularity and reusability. It consists of core components
+  that interact seamlessly to provide a comprehensive analytics
+  solution.</p>
+  <h3 id="core-components-and-their-interactions">Core Components and
+  Their Interactions</h3>
+  <ul>
+  <li><strong>API Server</strong>: A Flask-based server that handles
+  incoming requests for running simulations and data analysis.</li>
+  <li><strong>Simulation Engine</strong>: The core logic that executes
+  various pricing simulations.</li>
+  <li><strong>Data Collection Module</strong>: Interfaces with LLM
+  providers to gather usage data.</li>
+  <li><strong>Visualization Module</strong>: Generates visual
+  representations of the simulation results and usage data.</li>
+  </ul>
+  <h3 id="technology-stack-and-dependencies">Technology Stack and
+  Dependencies</h3>
+  <ul>
+  <li><strong>Programming Languages</strong>: Python, JavaScript</li>
+  <li><strong>Frameworks</strong>: Flask (for API server), Dash (for
+  dashboard visualization)</li>
+  <li><strong>Data Processing</strong>: Pandas, NumPy</li>
+  <li><strong>Statistical Analysis</strong>: SciPy, Statsmodels</li>
+  <li><strong>Visualization</strong>: Plotly, Matplotlib, Seaborn</li>
+  <li><strong>Databases</strong>: Supports local file-based storage; can
+  be extended for cloud storage</li>
+  </ul>
+  <h3 id="design-patterns-used">Design Patterns Used</h3>
+  <ul>
+  <li><strong>MVC (Model-View-Controller)</strong>: Separates data
+  handling, user interface, and application logic for cleaner code
+  organization.</li>
+  <li><strong>Singleton</strong>: Used for managing API client instances
+  to ensure a single point of access.</li>
+  </ul>
+  <h2 id="getting-started">Getting Started</h2>
+  <h3 id="prerequisites">Prerequisites</h3>
+  <ul>
+  <li><strong>System Requirements</strong>
+  <ul>
+  <li>Python 3.9 or higher</li>
+  <li>Basic understanding of Python and command-line usage</li>
+  </ul></li>
+  <li><strong>Required Software and Tools</strong>
+  <ul>
+  <li>Python package manager (<code>pip</code>)</li>
+  <li>Virtual environment manager (optional but recommended)</li>
+  </ul></li>
+  </ul>
+  <h3 id="installation">Installation</h3>
+  <ol type="1">
+  <li><p>Clone the repository:</p>
+  <div class="sourceCode" id="cb1"><pre
+  class="sourceCode bash"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> clone https://github.com/aanshshah/llm_token_analytics_lib.git</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="bu">cd</span> llm_token_analytics_lib</span></code></pre></div></li>
+  <li><p>Install the library and dependencies:</p>
+  <div class="sourceCode" id="cb2"><pre
+  class="sourceCode bash"><code class="sourceCode bash"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="ex">pip</span> install <span class="at">-e</span> .</span></code></pre></div></li>
+  <li><p>(Optional) Install provider dependencies for data
+  collection:</p>
+  <div class="sourceCode" id="cb3"><pre
+  class="sourceCode bash"><code class="sourceCode bash"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="ex">pip</span> install llm-token-analytics<span class="pp">[</span><span class="ss">providers</span><span class="pp">]</span></span></code></pre></div></li>
+  <li><p>Set up your environment variables for API keys (if
+  applicable):</p>
+  <div class="sourceCode" id="cb4"><pre
+  class="sourceCode bash"><code class="sourceCode bash"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="bu">export</span> <span class="va">OPENAI_API_KEY</span><span class="op">=</span><span class="st">&quot;your-key&quot;</span></span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="bu">export</span> <span class="va">ANTHROPIC_API_KEY</span><span class="op">=</span><span class="st">&quot;your-key&quot;</span></span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a><span class="bu">export</span> <span class="va">GOOGLE_CLOUD_PROJECT</span><span class="op">=</span><span class="st">&quot;your-project&quot;</span></span></code></pre></div></li>
+  </ol>
+  <h3 id="verification-steps">Verification Steps</h3>
+  <p>To verify the installation, run the basic simulation example:</p>
+  <div class="sourceCode" id="cb5"><pre
+  class="sourceCode bash"><code class="sourceCode bash"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="ex">python</span> examples/01_basic_simulation.py</span></code></pre></div>
+  <h2 id="quick-start">Quick Start</h2>
+  <h3 id="basic-usage-example">Basic Usage Example</h3>
+  <p>To get started quickly, run the basic simulation:</p>
+  <div class="sourceCode" id="cb6"><pre
+  class="sourceCode bash"><code class="sourceCode bash"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="ex">python</span> examples/01_basic_simulation.py</span></code></pre></div>
+  <h3 id="common-workflows">Common Workflows</h3>
+  <ul>
+  <li><strong>Running a Monte Carlo simulation</strong>: Use
+  <code>01_basic_simulation.py</code>.</li>
+  <li><strong>Interacting with the API</strong>: Start the API server
+  and then run <code>02_api_client.py</code>.</li>
+  <li><strong>Collecting usage data</strong>: Ensure API keys are set
+  and run <code>03_data_collection.py</code>.</li>
+  </ul>
+  <h2 id="usage-guide">Usage Guide</h2>
+  <h3 id="detailed-usage-instructions">Detailed Usage Instructions</h3>
+  <p>Each example script demonstrates a specific functionality: -
+  <strong>Basic Simulation</strong>: Run the script to see how different
+  pricing mechanisms perform. - <strong>API Client</strong>: Interacts
+  with the API for remote simulations and retrieves results. -
+  <strong>Data Collection</strong>: Gathers real-time usage data from
+  LLM providers.</p>
+  <h3 id="command-line-interface">Command-Line Interface</h3>
+  <ul>
+  <li>Each script can be executed directly via the command line.</li>
+  <li>Arguments and configurations can be adjusted within the scripts
+  for different scenarios.</li>
+  </ul>
+  <h3 id="configuration-options">Configuration Options</h3>
+  <p>Configuration files, such as <code>.env</code> and
+  <code>config.yaml</code>, can be used to set environment variables and
+  application settings.</p>
+  <h3 id="examples-for-common-scenarios">Examples for Common
+  Scenarios</h3>
+  <p>Refer to the <code>examples/</code> directory for practical scripts
+  demonstrating common use cases.</p>
+  <h2 id="api-documentation">API Documentation</h2>
+  <h3 id="public-apis-and-interfaces">Public APIs and Interfaces</h3>
+  <ul>
+  <li><strong>/simulation</strong>: Endpoint to run simulations.</li>
+  <li><strong>/analysis</strong>: Endpoint for retrieving analysis
+  results.</li>
+  <li><strong>/health</strong>: Endpoint to check the health status of
+  the API server.</li>
+  </ul>
+  <h3 id="functionmethod-documentation">Function/Method
+  Documentation</h3>
+  <p>Refer to the source code in the <code>app/routes/</code> directory
+  for detailed method-level documentation.</p>
+  <h3 id="data-models-and-schemas">Data Models and Schemas</h3>
+  <p>The API expects JSON requests and responses structured according to
+  the specifications defined in the codebase.</p>
+  <h3 id="requestresponse-formats">Request/Response Formats</h3>
+  <p>Refer to the API documentation within the source code for the exact
+  formats expected.</p>
+  <h2 id="development">Development</h2>
+  <h3 id="setting-up-development-environment">Setting Up Development
+  Environment</h3>
+  <ul>
+  <li>Clone the repository and follow the installation
+  instructions.</li>
+  <li>Set up a virtual environment for isolated package management.</li>
+  </ul>
+  <h3 id="building-from-source">Building from Source</h3>
+  <p>Run the following command to build the project:</p>
+  <div class="sourceCode" id="cb7"><pre
+  class="sourceCode bash"><code class="sourceCode bash"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="ex">python</span> setup.py install</span></code></pre></div>
+  <h3 id="running-tests">Running Tests</h3>
+  <p>To run the tests, use:</p>
+  <div class="sourceCode" id="cb8"><pre
+  class="sourceCode bash"><code class="sourceCode bash"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="ex">pytest</span></span></code></pre></div>
+  <h2 id="contributing">Contributing</h2>
+  <h3 id="contribution-guidelines">Contribution Guidelines</h3>
+  <ul>
+  <li>Please fork the repository and submit a pull request.</li>
+  <li>Ensure your code is well-documented and follows the project’s
+  coding standards.</li>
+  </ul>
+  <h3 id="code-style-and-standards">Code Style and Standards</h3>
+  <p>Follow PEP 8 for Python code styling and ensure all changes are
+  tested.</p>
+  <h3 id="pull-request-process">Pull Request Process</h3>
+  <ul>
+  <li>Open a pull request with a detailed description of your
+  changes.</li>
+  <li>Ensure all tests pass before submission.</li>
+  </ul>
+  <h2 id="deployment">Deployment</h2>
+  <h3 id="deployment-options">Deployment Options</h3>
+  <ul>
+  <li>The library can be deployed as a standalone API server or
+  integrated into existing applications.</li>
+  </ul>
+  <h3 id="production-configuration">Production Configuration</h3>
+  <ul>
+  <li>Configure the API server for production use, including setting up
+  a WSGI server (e.g., Gunicorn).</li>
+  </ul>
+  <h3 id="performance-optimization">Performance Optimization</h3>
+  <ul>
+  <li>Optimize database queries and caching strategies for high-load
+  scenarios.</li>
+  </ul>
+  <h3 id="security-considerations">Security Considerations</h3>
+  <ul>
+  <li>Secure API keys and sensitive data using environment
+  variables.</li>
+  <li>Implement rate limiting and authentication for the API
+  server.</li>
+  </ul>
+  <h2 id="troubleshooting">Troubleshooting</h2>
+  <h3 id="common-issues-and-solutions">Common Issues and Solutions</h3>
+  <ul>
+  <li><strong>Issue</strong>: Library does not install correctly.
+  <ul>
+  <li><strong>Solution</strong>: Ensure you have Python 3.9+ and all
+  dependencies are correctly specified.</li>
+  </ul></li>
+  <li><strong>Issue</strong>: API server fails to start.
+  <ul>
+  <li><strong>Solution</strong>: Check for port conflicts and ensure all
+  required environment variables are set.</li>
+  </ul></li>
+  </ul>
+  <h3 id="faq">FAQ</h3>
+  <ul>
+  <li><strong>Q</strong>: How can I contribute to the library?
+  <ul>
+  <li><strong>A</strong>: Please refer to the contributing section for
+  details.</li>
+  </ul></li>
+  <li><strong>Q</strong>: Where can I find more examples?
+  <ul>
+  <li><strong>A</strong>: Check the <code>examples/</code> directory for
+  usage demonstrations.</li>
+  </ul></li>
+  </ul>
+  <h3 id="debug-tips">Debug Tips</h3>
+  <ul>
+  <li>Use logging to debug issues in the API server or simulation
+  scripts.</li>
+  <li>Test individual components separately to isolate issues.</li>
+  </ul>
+  <h3 id="where-to-get-help">Where to Get Help</h3>
+  <p>For further assistance, please raise an issue on the GitHub
+  repository or contact the maintainers.</p>
+  <h2 id="additional-resources">Additional Resources</h2>
+  <ul>
+  <li><a
+  href="https://github.com/aanshshah/llm_token_analytics_lib">GitHub
+  Repository</a></li>
+  <li><a href="docs/">Documentation</a></li>
+  <li><a
+  href="https://github.com/aanshshah/llm_token_analytics_lib/discussions">Community
+  Forum</a></li>
+  <li><a href="CONTRIBUTING.md">Contributing Guidelines</a></li>
+  </ul>
+  <p>This documentation aims to provide comprehensive guidance to
+  developers and users of the LLM Token Analytics Library, ensuring they
+  can utilize its features effectively and contribute to its growth.</p>
+  <div class="footer">
+    <p><a href="index.html">← Back to Wiki Home</a> | <a href="https://github.com/aanshshah/llm_token_analytics_lib">📚 GitHub Repository</a></p>
+  </div>
+</body>
+</html>

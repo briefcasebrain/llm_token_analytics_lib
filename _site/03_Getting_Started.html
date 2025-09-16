@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="generator" content="pandoc">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+        <title>03_Getting_Started</title>
+  <style>
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      line-height: 1.6;
+      color: #24292e;
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 20px;
+      background-color: #ffffff;
+    }
+    .header-nav {
+      background: #f6f8fa;
+      padding: 15px;
+      border-radius: 8px;
+      margin-bottom: 30px;
+      text-align: center;
+    }
+    .header-nav a {
+      display: inline-block;
+      margin: 0 10px;
+      padding: 8px 16px;
+      background: #0366d6;
+      color: white;
+      text-decoration: none;
+      border-radius: 5px;
+      font-size: 14px;
+    }
+    .header-nav a:hover {
+      background: #0256cc;
+    }
+    h1, h2, h3, h4, h5, h6 {
+      color: #24292e;
+      margin-top: 24px;
+      margin-bottom: 16px;
+      font-weight: 600;
+    }
+    h1 {
+      border-bottom: 1px solid #e1e4e8;
+      padding-bottom: 10px;
+    }
+    h2 {
+      border-bottom: 1px solid #e1e4e8;
+      padding-bottom: 8px;
+    }
+    pre {
+      background: #f6f8fa;
+      border-radius: 6px;
+      padding: 16px;
+      overflow: auto;
+      border: 1px solid #e1e4e8;
+    }
+    code {
+      background: #f6f8fa;
+      padding: 2px 4px;
+      border-radius: 3px;
+      font-size: 85%;
+    }
+    pre code {
+      background: none;
+      padding: 0;
+    }
+    blockquote {
+      border-left: 4px solid #dfe2e5;
+      padding-left: 16px;
+      color: #6a737d;
+      margin: 0;
+    }
+    table {
+      border-collapse: collapse;
+      width: 100%;
+      margin: 16px 0;
+    }
+    th, td {
+      border: 1px solid #e1e4e8;
+      padding: 8px 12px;
+      text-align: left;
+    }
+    th {
+      background: #f6f8fa;
+      font-weight: 600;
+    }
+    a {
+      color: #0366d6;
+      text-decoration: none;
+    }
+    a:hover {
+      text-decoration: underline;
+    }
+    .footer {
+      margin-top: 40px;
+      padding-top: 20px;
+      border-top: 1px solid #e1e4e8;
+      text-align: center;
+      color: #586069;
+      font-size: 14px;
+    }
+  </style>
+</head>
+<body>
+  <div class="header-nav">
+    <a href="index.html">🏠 Home</a>
+    <a href="01_Overview.html">📖 Overview</a>
+    <a href="02_Architecture.html">🏗️ Architecture</a>
+    <a href="03_Getting_Started.html">🚀 Getting Started</a>
+    <a href="06_API_Documentation.html">🔌 API Docs</a>
+    <a href="llm_token_analytics_lib_wiki.html">📄 Complete Wiki</a>
+  </div>
+  <h2 id="getting-started">Getting Started</h2>
+  <h3 id="prerequisites">Prerequisites</h3>
+  <ul>
+  <li><strong>System Requirements</strong>
+  <ul>
+  <li>Python 3.9 or higher</li>
+  <li>Basic understanding of Python and command-line usage</li>
+  </ul></li>
+  <li><strong>Required Software and Tools</strong>
+  <ul>
+  <li>Python package manager (<code>pip</code>)</li>
+  <li>Virtual environment manager (optional but recommended)</li>
+  </ul></li>
+  </ul>
+  <h3 id="installation">Installation</h3>
+  <ol type="1">
+  <li><p>Clone the repository:</p>
+  <div class="sourceCode" id="cb1"><pre
+  class="sourceCode bash"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> clone https://github.com/aanshshah/llm_token_analytics_lib.git</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="bu">cd</span> llm_token_analytics_lib</span></code></pre></div></li>
+  <li><p>Install the library and dependencies:</p>
+  <div class="sourceCode" id="cb2"><pre
+  class="sourceCode bash"><code class="sourceCode bash"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="ex">pip</span> install <span class="at">-e</span> .</span></code></pre></div></li>
+  <li><p>(Optional) Install provider dependencies for data
+  collection:</p>
+  <div class="sourceCode" id="cb3"><pre
+  class="sourceCode bash"><code class="sourceCode bash"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="ex">pip</span> install llm-token-analytics<span class="pp">[</span><span class="ss">providers</span><span class="pp">]</span></span></code></pre></div></li>
+  <li><p>Set up your environment variables for API keys (if
+  applicable):</p>
+  <div class="sourceCode" id="cb4"><pre
+  class="sourceCode bash"><code class="sourceCode bash"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="bu">export</span> <span class="va">OPENAI_API_KEY</span><span class="op">=</span><span class="st">&quot;your-key&quot;</span></span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="bu">export</span> <span class="va">ANTHROPIC_API_KEY</span><span class="op">=</span><span class="st">&quot;your-key&quot;</span></span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a><span class="bu">export</span> <span class="va">GOOGLE_CLOUD_PROJECT</span><span class="op">=</span><span class="st">&quot;your-project&quot;</span></span></code></pre></div></li>
+  </ol>
+  <h3 id="verification-steps">Verification Steps</h3>
+  <p>To verify the installation, run the basic simulation example:</p>
+  <div class="sourceCode" id="cb5"><pre
+  class="sourceCode bash"><code class="sourceCode bash"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="ex">python</span> examples/01_basic_simulation.py</span></code></pre></div>
+  <div class="footer">
+    <p><a href="index.html">← Back to Wiki Home</a> | <a href="https://github.com/aanshshah/llm_token_analytics_lib">📚 GitHub Repository</a></p>
+  </div>
+</body>
+</html>
