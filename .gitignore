@@ -201,3 +201,6 @@ config.local.yaml
 # Test artifacts
 test-results/
 test-reports/
+
+# GitHub Pages build output
+_site/
