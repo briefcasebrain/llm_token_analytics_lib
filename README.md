@@ -382,11 +382,11 @@ Contributions are welcome! Please feel free to submit a Pull Request.
 This project is licensed under a Non-Commercial License - see [LICENSE](LICENSE) for details.
 
 **Key Restrictions:**
-- ❌ Commercial use prohibited
-- ❌ Cannot be used in revenue-generating activities
-- ❌ Cannot be incorporated into commercial products
-- ✅ Personal, educational, and research use allowed
-- ✅ Non-profit organizational use permitted
+- Commercial use prohibited
+- Cannot be used in revenue-generating activities
+- Cannot be incorporated into commercial products
+- Personal, educational, and research use allowed
+- Non-profit organizational use permitted
 
 For commercial licensing inquiries, please contact the project maintainers.
 
@@ -397,9 +397,9 @@ If you use this library in your research, please cite:
 ```bibtex
 @software{llm_token_analytics,
   title={LLM Token Analytics Library},
-  author={Your Name},
+  author=Aansh Shah},
   year={2025},
-  url={https://github.com/your-username/llm-token-analytics}
+  url={https://github.com/briefcasebrain/llm-token-analytics}
 }
 ```
 
